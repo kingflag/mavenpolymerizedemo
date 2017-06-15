@@ -1,0 +1,115 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.king.demo</groupId>
+    <artifactId>mavenpolymerizedemo</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  <artifactId>maven-doc</artifactId>
+  <packaging>pom</packaging>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+            <configuration>
+              <descriptors>
+                <descriptors>src/assembly/assembly.xml</descriptors>
+              </descriptors>
+              <appendAssemblyId>false</appendAssemblyId>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <target>
+                <delete>
+                  <fileset
+                    dir="${basedir}/target/docbook/publish/en-US/html">
+                    <include name="*.xml" />
+                    <include name="*.xpr" />
+                  </fileset>
+                </delete>
+                <copy todir="${basedir}/target/site/doc/usermanual">
+                  <fileset
+                    dir="${basedir}/target/docbook/publish/en-US/html" />
+                </copy>
+              </target>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.jboss.maven.plugins</groupId>
+        <artifactId>maven-jdocbook-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>compile</phase>
+            <goals>
+              <goal>resources</goal>
+              <goal>generate</goal>
+            </goals>
+            <configuration>
+              <sourceDocumentName>main.xml</sourceDocumentName>
+              <imageResource>
+                <directory>${basedir}/src/main/docbook/</directory>
+              </imageResource>
+              <formats>
+                <format>
+                  <formatName>html</formatName>
+                  <stylesheetResource>classpath:/xslt/org/jboss/xhtml.xsl</stylesheetResource>
+                  <finalName>index.html</finalName>
+                </format>
+              </formats>
+              <options>
+                <xincludeSupported>true</xincludeSupported>
+                <transformerParameters>
+                  <chunk.section.depth>1</chunk.section.depth>
+                  <toc.section.depth>2</toc.section.depth>
+                </transformerParameters>
+              </options>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+        <version>2.4</version>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>index</report>
+              <report>summary</report>
+              <report>plugins</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+      </plugin>
+    </plugins>
+  </reporting>
+
+
+</project>

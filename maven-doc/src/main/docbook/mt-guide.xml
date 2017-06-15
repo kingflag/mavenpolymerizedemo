@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.0/rng/docbookxi.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<part xmlns="http://docbook.org/ns/docbook" 
+        xmlns:xi="http://www.w3.org/2001/XInclude"
+        xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0">
+    <title xml:id="part-mt-guide">维护手册</title>
+    <chapter>
+        <title>引言</title>
+        <para>本文的目的是，介绍如何根据生产环境的实际情况，进行下载、安装与配置，在运行阶段进行维护等相关内容。</para>
+        <para>最主要面向的读者为系统实施人员和系统运维人员。</para>
+    </chapter>
+
+    <xi:include href="mt-getting-start.xml"/>
+</part>

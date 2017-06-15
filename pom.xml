@@ -11,6 +11,7 @@
     <module>maven-server</module>
     <module>maven-about</module>
     <module>maven-core</module>
+    <module>maven-doc</module>
   </modules>
 
   <properties>
