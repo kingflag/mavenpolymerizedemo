@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 版权所有(C)，2014，上海海鼎信息工程股份有限公司，保留所有权利。 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+  xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
+  xmlns:security="http://www.springframework.org/schema/security"
+  xmlns:aop="http://www.springframework.org/schema/aop"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/util
+    http://www.springframework.org/schema/util/spring-util.xsd
+    http://www.springframework.org/schema/security
+    http://www.springframework.org/schema/security/spring-security.xsd
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop.xsd
+    http://cxf.apache.org/jaxrs
+    http://cxf.apache.org/schemas/jaxrs.xsd">
+
+  <import resource="classpath:META-INF/cxf/cxf.xml" />
+  <import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+
+
+
+
+  <bean class="com.hd123.rumba.commons.rpc.service.ServiceFactory"
+    factory-method="getDefault" lazy-init="false" />
+
+  <bean id="jsonDateFormat" class="java.text.SimpleDateFormat">
+    <constructor-arg value="yyyy-MM-dd HH:mm:ss" />
+  </bean>
+  <bean id="annotationIntrospector" class="org.codehaus.jackson.map.AnnotationIntrospector.Pair">
+    <constructor-arg>
+      <bean
+        class="org.codehaus.jackson.map.introspect.JacksonAnnotationIntrospector" />
+    </constructor-arg>
+    <constructor-arg>
+      <bean class="org.codehaus.jackson.xc.JaxbAnnotationIntrospector" />
+    </constructor-arg>
+  </bean>
+  <bean id="jsonProvider" class="org.codehaus.jackson.jaxrs.JacksonJsonProvider">
+    <property name="mapper">
+      <bean class="org.codehaus.jackson.map.ObjectMapper">
+        <property name="serializationConfig.dateFormat" ref="jsonDateFormat" />
+        <property name="serializationConfig.annotationIntrospector"
+          ref="annotationIntrospector" />
+        <property name="deserializationConfig.dateFormat" ref="jsonDateFormat" />
+        <property name="deserializationConfig.annotationIntrospector"
+          ref="annotationIntrospector" />
+      </bean>
+    </property>
+  </bean>
+
+
+  <jaxrs:server id="services" address="/core">
+
+    <jaxrs:serviceBeans>
+      <!-- 业务 -->
+      <bean id="testbaen" class="com.king.demo.maven.api.ReadJobApiImpl">
+      
+        <property name="readJobController" ref="readJobcontroller" />
+      <!---->
+      </bean>
+
+    </jaxrs:serviceBeans>
+
+    <jaxrs:providers>
+      <bean class="org.apache.cxf.jaxrs.provider.JAXBElementProvider" />
+      <ref bean="jsonProvider" />
+      <bean
+        class="com.hd123.rumba.commons.rs.exception.IllegalArgumentExceptionMapper" />
+      <bean class="com.hd123.rumba.commons.rs.exception.IOExceptionMapper" />
+      <bean
+        class="com.hd123.rumba.commons.rs.exception.JsonProcessingExceptionMapper" />
+      <bean
+        class="com.hd123.rumba.commons.rs.security.AccessDeniedExceptionMapper" />
+      <bean
+        class="com.hd123.rumba.commons.rs.entity.EntityNotFoundExceptionMapper" />
+      <bean
+        class="com.hd123.rumba.commons.rs.entity.VersionConflictExceptionMapper" />
+    </jaxrs:providers>
+  </jaxrs:server>
+
+
+
+
+
+</beans>

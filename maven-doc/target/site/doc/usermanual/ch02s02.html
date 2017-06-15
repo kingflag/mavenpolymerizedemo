@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><title xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory">2.2. 配置</title><link rel="stylesheet" href="css/jbossorg.css" type="text/css"/><meta xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" name="generator" content="DocBook XSL Stylesheets V1.72.0"/><link rel="start" href="index.html" title="HEADING® MCDTS™ 用户手册"/><link rel="up" href="ch02.html" title="Chapter 2. 从这里开始"/><link rel="prev" href="ch02s01.html" title="2.1. 安装"/><link rel="next" href="ch02s03.html" title="2.3. 验证"/></head><body><p id="title"><a href="http://www.jboss.org" class="site_href"><strong>JBoss.org</strong></a><a href="http://docs.jboss.org/" class="doc_href"><strong>Community Documentation</strong></a></p><ul class="docnav"><li class="previous"><a accesskey="p" href="ch02s01.html"><strong>Prev</strong></a></li><li class="next"><a accesskey="n" href="ch02s03.html"><strong>Next</strong></a></li></ul><div class="sect1" lang="en-US"><div class="titlepage"><div><div><h2 class="title"><a id="d4e34"/>2.2. 配置</h2></div></div></div>
+		
+	     <pre xmlns="" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="">文件配置路径：D:\javatool\apache-tomcat-7.0.57\webapps\mcdts-server-1.0-SNAPSHOT\WEB-INF\mcdts-server.properties</pre>
+		<div class="sect2" lang="en-US"><div class="titlepage"><div><div><h3 class="title"><a id="d4e37"/>2.2.1. 配置HDPOS4数据库连接</h3></div></div></div>
+				
+			<p>用于配置接口数据数据源，配置指向HDPOS4数据库，支持Oracle数据库。</p>
+			<p>必须配置。</p>
+			<pre xmlns="" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="">##################################################################################
+## 数据服务数据库：支持Oracle（默认），生产环境中应指向HDPOS4业务数据库。
+##################################################################################
+
+## JDBC驱动程序。推荐使用ojdbc14.jar（com.oracle:ojdbc14:10.2.0.1.0:jar）如果需要可以使用mysql
+#mcdts-core.dataSource.driverClassName=oracle.jdbc.driver.OracleDriver
+#mcdts-core.dataSource.url=jdbc:oracle:thin:@Orasvr:1521:DBInst
+#mcdts-core.dataSource.username=yourusername
+#mcdts-core.dataSource.password=yourpassword
+## 数据库初始连接数。
+#mcdts-core.dataSource.initialSize=0
+## 数据库最大连接数。
+#mcdts-core.dataSource.maxActive=8
+## 数据库访问超时，单位：毫秒。设为-1会一直等待。
+#mcdts-core.dataSource.maxWait=-1
+## 判断数据库连接是否有效的SQL语句。
+#mcdts-core.dataSource.validationQuery=SELECT 1 FROM DUAL
+</pre>
+		</div>    
+	    <div class="sect2" lang="en-US"><div class="titlepage"><div><div><h3 class="title"><a id="d4e42"/>2.2.2. 配置JOB</h3></div></div></div>
+	        	
+	            <p>文件发送和接收，默认为一分钟执行一次。</p>
+	            <pre xmlns="" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="">###################################################################################
+## JOB配置
+################################################################################## 
+# 使用quartz cronExpression表达式，常用的有：
+# “0 0 10 * * ?”表示每天10:00:00执行一次。
+# “45 30 10,14,16 * * ?”表示每天10:30:45、14:30:45、16:30:45各执行一次。
+# “0 5,25,45 10 * * ?”表示每天10:05:00、10:25:00、10:45:00各执行一次。
+# “0 5/20 10 * * ?”表示每天10点的60分钟内，从第5分钟开始，每隔20分钟执行一次。
+# “0 0/30 9-17 * * ?”表示每天9点到17点，每半小时执行一次。
+# “0 0 23-7/2 * * ?”表示每天23点到第二天7点，每2小时执行一次。
+# “0 0/5 * * * ?”表示每5分钟执行一次。 
+## 发送job的执行时间
+#mcdts-core.sendJob.run.cronExpression=0 0/1 * * * ?
+## 接收job的执行时间
+#mcdts-core.receiveJob.run.cronExpression=0 0/1 * * * ?
+
+## 启动读取交换配置的信息SQL
+#mcdts-core.serverConfig.loadConfigSql=select * from MCDataExchangeCfg
+## 发送文件保存到本地的临时路径
+#mcdts-core.serverConfig.sendFilesPath=D:/test/send/
+## 接收文件保存到本地的临时路径
+#mcdts-core.serverConfig.receiveFilesPath=D:/test/receive/
+</pre>
+	    </div>
+		<div class="sect2" lang="en-US"><div class="titlepage"><div><div><h3 class="title"><a id="d4e46"/>2.2.3. 业务配置</h3></div></div></div>
+				
+			<p>背景：目前第三方接口在与第三方联调阶段，由于第三方的开发进度不同，客户希望部分国家的某几个已调试通过的单据，先通过第三方接口上传回总部，其他单据暂不接收。对于一些国家目前只能做到销售单（或者一部分单据）上传的情况，我们对其在正式接口环境下做出的限制是：经过双方验证确认的单据种类允许上传，否则不允许。比如销售单retailbill经过我们检验，认为第三方可以上传，则上传retailbill是符合要求的，如果此时第三方上传了其它未经我们许可上传的单据种类，则可能造成系统脏数据。为了防止未经过我们检验第三方就上传单据给我们的情况，需要考虑对我们接收第三方单据的逻辑进行调整,让系统管控到、对于各个国家的哪些单据类型系统允许接收。</p>
+			<p>表名：MCDataExchangeCtrl</p>
+			<div class="itemizedlist"><ul><li><p>字段名</p></li><li><p>*****，Varchar2(20)，Not Null，用户</p></li><li><p>***，Varchar2(20)，Not Null，余额</p></li><li><p>II，Int，Not Null，忘记了</p></li></ul></div>
+			<p>主要的业务类型：</p>
+			<div class="itemizedlist"><ul><li><p>发送数据</p></li></ul></div>
+			<div class="itemizedlist"><ul><li><p>接收数据</p></li></ul></div>
+			<p>默认配置:ServiceCode='-'</p>
+			<pre xmlns="" xmlns:rf="java:org.jboss.highlight.XhtmlRendererFactory" class="">
+	insert into hduserinfo(******,****,***) values('-','GOODS',0);
+			</pre>
+			<p>说明：看console窗口就可以看到结果了，信息表示正确就可以用了。</p>
+		</div>    
+	</div><ul class="docnav"><li class="previous"><a accesskey="p" href="ch02s01.html"><strong>Prev</strong>2.1. 安装</a></li><li class="up"><a accesskey="u" href="#"><strong>Top of page</strong></a></li><li class="home"><a accesskey="h" href="index.html"><strong>Front page</strong></a></li><li class="next"><a accesskey="n" href="ch02s03.html"><strong>Next</strong>2.3. 验证</a></li></ul></body></html>

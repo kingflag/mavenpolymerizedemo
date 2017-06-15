@@ -75,9 +75,9 @@
 
     <flexjson.version>3.3</flexjson.version>
     <httpmime.version>4.5.2</httpmime.version>
-    
+
     <rumba-enc.version>1.0.1</rumba-enc.version>
-    
+
 
     <docker-maven-plugin.version>0.4.10</docker-maven-plugin.version>
     <heading.docker.registry>dockerhub.hd123.com</heading.docker.registry>
@@ -85,7 +85,9 @@
 
     <quartz.version>1.6.1</quartz.version>
     <alipay-sdk-java.version>20160819120058</alipay-sdk-java.version>
-	<tapestry-json.version>4.1.5</tapestry-json.version>
+    <tapestry-json.version>4.1.5</tapestry-json.version>
+
+    <maven-resources-plugin.version>2.4.3</maven-resources-plugin.version>
   </properties>
 
   <dependencyManagement>
@@ -98,21 +100,21 @@
         <version>${rumba-commons-biz.version}</version>
       </dependency>
       <dependency>
-  		<groupId>com.hd123.cloud.pay.external</groupId>
- 		<artifactId>alipay-sdk-java</artifactId>
-  		<version>${alipay-sdk-java.version}</version>
-	  </dependency>
+        <groupId>com.hd123.cloud.pay.external</groupId>
+        <artifactId>alipay-sdk-java</artifactId>
+        <version>${alipay-sdk-java.version}</version>
+      </dependency>
 <!-- 	  <dependency>
         <groupId>com.hd123.rumba.enc</groupId>
         <artifactId>rumba-enc-spring</artifactId>
         <version>${rumba-enc.version}</version>
       </dependency> -->
-	  <dependency>
-  		<groupId>com.hd123.jpos.external</groupId>
-  		<artifactId>tapestry-json</artifactId>
-  		<version>${tapestry-json.version}</version>
-  		<classifier>json</classifier>
-	  </dependency>
+      <dependency>
+        <groupId>com.hd123.jpos.external</groupId>
+        <artifactId>tapestry-json</artifactId>
+        <version>${tapestry-json.version}</version>
+        <classifier>json</classifier>
+      </dependency>
       <dependency>
         <groupId>com.hd123.rumba.commons</groupId>
         <artifactId>rumba-commons-mini</artifactId>
@@ -132,6 +134,12 @@
         <groupId>com.hd123.rumba.enc</groupId>
         <artifactId>rumba-enc-spring</artifactId>
         <version>${rumba-enc.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>${maven-resources-plugin.version}</version>
       </dependency>
 
       <dependency>

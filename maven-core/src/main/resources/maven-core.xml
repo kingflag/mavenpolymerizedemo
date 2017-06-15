@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 版权所有(C)，2014，上海海鼎信息工程股份有限公司，保留所有权利。 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:tx="http://www.springframework.org/schema/tx"
+  xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+  <context:annotation-config />
+  <import resource="classpath:maven-api.xml" />
+
+  <import resource="classpath:META-INF/maven-core/*.xml" />
+
+  <tx:annotation-driven transaction-manager="maven-core.transactionManager" />
+
+<!--   <bean id="mcdts-core.dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+    destroy-method="close">
+    <property name="driverClassName"
+      value="${mcdts-core.dataSource.driverClassName:oracle.jdbc.driver.OracleDriver}" />
+    <property name="url"
+      value="${mcdts-core.dataSource.url:jdbc:oracle:thin:@172.17.12.9:1521:pos4stanew}" />
+    <property name="username" value="${mcdts-core.dataSource.username:hd40}" />
+    <property name="password" value="${mcdts-core.dataSource.password:hd40}" />
+    <property name="initialSize" value="${mcdts-core.dataSource.initialSize:0}" />
+    <property name="maxActive" value="${mcdts-core.dataSource.maxActive:8}" />
+    <property name="maxWait" value="${mcdts-core.dataSource.maxWait:-1}" />
+    <property name="validationQuery"
+      value="${mcdts-core.dataSource.validationQuery:select 1 from dual}" />
+  </bean> -->
+
+  <bean id="mytest.dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+    destroy-method="close">
+    <property name="url" value="jdbc:mysql://localhost:3306/test"></property>
+    <property name="username" value="root"></property>
+    <property name="password" value="root"></property>
+    <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+  </bean>
+
+
+<!--   <bean id="mcdts-core.transactionManager"
+    class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <property name="dataSource" ref="mytest.dataSource" />
+  </bean> -->
+
+  <bean id="maven-core.readJob" class="com.king.demo.maven.corejob.ReadJob" />
+
+
+
+  <bean id="maven-core.writeJob" class="com.king.demo.maven.corejob.WriteJob"></bean>
+
+<!-- 写入数据控制器 -->
+  <bean id="writeJobcontroller"
+    class="com.king.demo.maven.controller.WriteJobControllerImpl"></bean>
+
+<!-- 写入数据service -->
+  <bean id="writeJobservice" class="com.king.demo.maven.service.WriteJobServiceImpl"></bean>
+<!-- 写入数据dao -->
+  <bean id="writeJobdao" class="com.king.demo.maven.dao.WriteJobDaoImpl">
+    <property name="dataSource" ref="mytest.dataSource" />
+  </bean>
+
+
+<!-- 读取数据控制器 -->
+  <bean id="readJobcontroller"
+    class="com.king.demo.maven.controller.ReadJobControllerImpl"></bean>
+<!-- 读取数据service -->    
+   <bean id="readJobservice" class="com.king.demo.maven.service.ReadJobServiceImpl"></bean>
+<!-- 读取数据dao -->
+  <bean id="readJobdao" class="com.king.demo.maven.dao.ReadJobDaoImpl">
+    <property name="dataSource" ref="mytest.dataSource" />
+  </bean>
+
+
+
+</beans>
