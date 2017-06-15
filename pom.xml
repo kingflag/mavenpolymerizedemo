@@ -12,6 +12,7 @@
     <module>maven-about</module>
     <module>maven-core</module>
     <module>maven-doc</module>
+    <module>maven-api</module>
   </modules>
 
   <properties>
