@@ -12,8 +12,9 @@
 		http://www.springframework.org/schema/tx/spring-tx.xsd">
 
   <context:annotation-config />
+  <!-- 
   <import resource="classpath:maven-api.xml" />
-
+  -->
   <import resource="classpath:META-INF/maven-core/*.xml" />
 
   <tx:annotation-driven transaction-manager="maven-core.transactionManager" />
