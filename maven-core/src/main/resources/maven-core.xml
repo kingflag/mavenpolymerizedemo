@@ -19,20 +19,22 @@
 
   <tx:annotation-driven transaction-manager="maven-core.transactionManager" />
 
-<!--   <bean id="mcdts-core.dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+  <!--   
+  <bean id="maven-core.dataSource" class="org.apache.commons.dbcp.BasicDataSource"
     destroy-method="close">
     <property name="driverClassName"
-      value="${mcdts-core.dataSource.driverClassName:oracle.jdbc.driver.OracleDriver}" />
+      value="${maven-core.dataSource.driverClassName:oracle.jdbc.driver.OracleDriver}" />
     <property name="url"
-      value="${mcdts-core.dataSource.url:jdbc:oracle:thin:@172.17.12.9:1521:pos4stanew}" />
-    <property name="username" value="${mcdts-core.dataSource.username:hd40}" />
-    <property name="password" value="${mcdts-core.dataSource.password:hd40}" />
-    <property name="initialSize" value="${mcdts-core.dataSource.initialSize:0}" />
-    <property name="maxActive" value="${mcdts-core.dataSource.maxActive:8}" />
-    <property name="maxWait" value="${mcdts-core.dataSource.maxWait:-1}" />
+      value="${maven-core.dataSource.url:jdbc:oracle:thin:@172.17.12.9:1521:pos4stanew}" />
+    <property name="username" value="${maven-core.dataSource.username:hd40}" />
+    <property name="password" value="${maven-core.dataSource.password:hd40}" />
+    <property name="initialSize" value="${maven-core.dataSource.initialSize:0}" />
+    <property name="maxActive" value="${maven-core.dataSource.maxActive:8}" />
+    <property name="maxWait" value="${maven-core.dataSource.maxWait:-1}" />
     <property name="validationQuery"
-      value="${mcdts-core.dataSource.validationQuery:select 1 from dual}" />
-  </bean> -->
+      value="${maven-core.dataSource.validationQuery:select 1 from dual}" />
+  </bean>
+  -->
 
   <bean id="mytest.dataSource" class="org.apache.commons.dbcp.BasicDataSource"
     destroy-method="close">
@@ -42,11 +44,11 @@
     <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
   </bean>
 
-
-<!--   <bean id="mcdts-core.transactionManager"
+  
+  <bean id="maven-core.transactionManager"
     class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
     <property name="dataSource" ref="mytest.dataSource" />
-  </bean> -->
+  </bean>
 
   <bean id="maven-core.readJob" class="com.king.demo.maven.corejob.ReadJob" />
 
