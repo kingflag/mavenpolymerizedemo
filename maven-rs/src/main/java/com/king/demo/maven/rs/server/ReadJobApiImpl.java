@@ -21,6 +21,7 @@ import org.slf4j.LoggerFactory;
 
 
 
+
 import com.king.demo.maven.APIdomain.APIHdUserinfo;
 import com.king.demo.maven.controller.APIIReadJobController;
 import com.king.demo.maven.rs.service.IReadJobApi;
@@ -75,6 +76,12 @@ public class ReadJobApiImpl implements IReadJobApi {
     System.out.println(id);
     int result = readJobController.delete(id);
     return result;
+  }
+
+  @Override
+  public int save(APIHdUserinfo user) throws Exception {
+    // TODO Auto-generated method stub
+    return 0;
   }
 
 }
