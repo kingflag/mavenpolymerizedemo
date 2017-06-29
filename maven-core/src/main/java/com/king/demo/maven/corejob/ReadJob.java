@@ -5,11 +5,8 @@ package com.king.demo.maven.corejob;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-
-import com.king.demo.maven.controller.IReadJobController;
 
 public class ReadJob implements ApplicationContextAware {
 
@@ -17,8 +14,8 @@ public class ReadJob implements ApplicationContextAware {
 
   private ApplicationContext appCtx;
 
-  @Autowired
-  private IReadJobController readJobControllerImpl;
+//  @Autowired
+//  private IReadJobController readJobControllerImpl;
 
   @Override
   public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {

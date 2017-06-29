@@ -55,7 +55,7 @@
 
     <jaxrs:serviceBeans>
       <!-- 业务 -->
-      <bean id="testbaen" class="com.king.demo.maven.rs.ReadJobApiImpl">
+      <bean id="testbaen" class="com.king.demo.maven.rs.server.ReadJobApiImpl">
       
         <property name="readJobController" ref="readJobcontroller" />
       <!---->

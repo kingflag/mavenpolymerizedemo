@@ -6,5 +6,7 @@ import com.king.demo.maven.domain.HdUserinfo;
 
 public interface IReadJobDao {
   public List<HdUserinfo> selectall() throws Exception;
+  
+  public int delete(String id) throws Exception;
 
 }

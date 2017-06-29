@@ -12,11 +12,13 @@
   <dependencies>
 
 <!-- 依赖core -->
+    <!--     
     <dependency>
       <groupId>com.king.demo</groupId>
       <artifactId>maven-core</artifactId>
       <version>${project.version}</version>
     </dependency>
+     -->
 
     <dependency>
       <groupId>javax.ws.rs</groupId>

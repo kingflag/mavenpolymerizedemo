@@ -23,4 +23,10 @@ public class ReadJobServiceImpl implements IReadJobService {
     return result;
   }
 
+  @Override
+  public int delete(String id) throws Exception {
+    int result = readJobDaoImpl.delete(id);
+    return result;
+  }
+
 }

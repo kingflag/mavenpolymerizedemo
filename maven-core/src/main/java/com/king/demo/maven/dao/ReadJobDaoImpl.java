@@ -34,4 +34,11 @@ public class ReadJobDaoImpl implements IReadJobDao {
       String sql = "select * from HdUserinfo "; 
       return jdbcTemplate.query(sql, new BeanPropertyRowMapper(HdUserinfo.class));
   }
+
+  @Override
+  public int delete(String id) throws Exception {
+    String sql = "delete from HdUserinfo where ID ="+id; 
+    int result = jdbcTemplate.update(sql);
+    return result;
+  }
 }

@@ -1,33 +1,39 @@
-package com.king.demo.maven.rs;
+package com.king.demo.maven.rs.server;
 
 import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.king.demo.maven.controller.IReadJobController;
-import com.king.demo.maven.domain.HdUserinfo;
+
+
+
+
+
+import com.king.demo.maven.APIdomain.APIHdUserinfo;
+import com.king.demo.maven.controller.APIIReadJobController;
+import com.king.demo.maven.rs.service.IReadJobApi;
 
 public class ReadJobApiImpl implements IReadJobApi {
 
   protected static final Logger logger = LoggerFactory.getLogger(ReadJobApiImpl.class);
 
-  private IReadJobController readJobController;
+  private APIIReadJobController readJobController;
 
   public ReadJobApiImpl() {
     System.out.println("ReadJobApi构造方法+++++++++++");
   }
 
-  public IReadJobController getreadJobController() {
+  public APIIReadJobController getreadJobController() {
     return readJobController;
   }
 
-  public void setreadJobController(IReadJobController readJobController) {
+  public void setreadJobController(APIIReadJobController readJobController) {
     this.readJobController = readJobController;
   }
 
   @SuppressWarnings("finally")
-  public List<HdUserinfo> test() throws Exception {
+  public List<APIHdUserinfo> test() throws Exception {
     String resultString = "我要输出的数据";
 
     try {
@@ -38,6 +44,13 @@ public class ReadJobApiImpl implements IReadJobApi {
     } finally {
       return readJobController.selectall();
     }
+  }
+
+  @Override
+  public int delete(String id) throws Exception {
+    System.out.println(id);
+    int result = readJobController.delete(id);
+    return result;
   }
 
 }
