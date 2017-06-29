@@ -1,9 +1,20 @@
 package com.king.demo.maven.rs.server;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+
+
+
+
+
 
 
 
@@ -45,6 +56,19 @@ public class ReadJobApiImpl implements IReadJobApi {
       return readJobController.selectall();
     }
   }
+  
+
+  @Override
+  public Map<String, Object> findall() throws Exception{   
+    Map<String, Object> resultMap = new HashMap<String, Object>();
+    try {  
+      resultMap.put("restlt", readJobController.selectall());
+      return resultMap;
+    } catch (Exception e) {  
+        e.printStackTrace();  
+        return null;
+    }
+}  
 
   @Override
   public int delete(String id) throws Exception {
