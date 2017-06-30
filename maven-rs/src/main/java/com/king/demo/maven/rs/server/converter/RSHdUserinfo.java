@@ -8,6 +8,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = "RSHdUserinfo")
 public class RSHdUserinfo {
 
+
   private int id;
   private String user;
   private String surplus;

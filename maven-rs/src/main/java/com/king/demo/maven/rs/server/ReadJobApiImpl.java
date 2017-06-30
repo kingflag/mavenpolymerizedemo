@@ -7,7 +7,10 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.hd123.rumba.commons.biz.entity.OperateContext;
+import com.hd123.rumba.commons.codec.CodecUtilsBean;
 import com.hd123.rumba.commons.lang.Assert;
+import com.hd123.rumba.commons.rs.entity.OperateContextConverter;
 import com.king.demo.maven.APIdomain.APIHdUserinfo;
 import com.king.demo.maven.controller.APIIReadJobController;
 import com.king.demo.maven.rs.server.converter.HdUserinfoConverter;
@@ -73,7 +76,9 @@ public class ReadJobApiImpl implements IReadJobApi {
   @Override
   public int delete(String id) throws Exception {
     System.out.println(id);
+    Assert.assertArgumentNotNull(id, "id");
     int result = readJobController.delete(id);
+    System.out.println(result);
     return result;
   }
 

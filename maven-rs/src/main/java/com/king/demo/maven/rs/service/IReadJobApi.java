@@ -18,31 +18,32 @@ import com.king.demo.maven.rs.server.converter.RSHdUserinfo;
 
 @Path(value = "/apicla")
 @Produces(value = {
-    MediaType.APPLICATION_JSON })
-  @Consumes(value = {
-    MediaType.APPLICATION_JSON })
+  MediaType.APPLICATION_JSON })
+@Consumes(value = {
+  MediaType.APPLICATION_JSON })
 public interface IReadJobApi {
 
   @GET
   @Path(value = "/apifunc")
   public List<APIHdUserinfo> test() throws Exception;
-  
+
   @GET
   @Path(value = "/findall")
   public Map<String, Object> findall() throws Exception;
-  
+
   @GET
   @Path(value = "/getone/{id}")
-  public Map<String, Object> getone(@PathParam("id")String id) throws Exception;
-  
+  public Map<String, Object> getone(@PathParam("id") String id) throws Exception;
+
   @DELETE
   @Path(value = "/delete/{id}")
-  public int delete(@PathParam("id")String id) throws Exception;
-  
+  public int delete(@PathParam("id") String id)
+      throws Exception;
+
   @POST
   @Path(value = "/save")
   public int save(RSHdUserinfo user) throws Exception;
-  
+
   @POST
   @Path(value = "/update")
   public int update(RSHdUserinfo user) throws Exception;

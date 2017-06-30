@@ -70,7 +70,7 @@ public class ReadJobDaoImpl implements IReadJobDao {
 
   @Override
   public int delete(String id) throws Exception {
-    String sql = "delete from HdUserinfo where ID ==?";
+    String sql = "delete from HdUserinfo where ID =?";
     Object args[] = new Object[]{id};
     int result = jdbcTemplate.update(sql,args);
     return result;
