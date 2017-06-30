@@ -8,19 +8,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.king.demo.maven.dao.IReadJobDao;
 import com.king.demo.maven.domain.HdUserinfo;
 
-
 public class ReadJobServiceImpl implements IReadJobService {
 
   @Autowired
-  private IReadJobDao readJobDaoImpl;  
-  
+  private IReadJobDao readJobDaoImpl;
+
   @Override
   public List<HdUserinfo> selectall() throws Exception {
     List<HdUserinfo> result = new ArrayList<HdUserinfo>();
     System.out.println("readJobDaoImpl的selectall");
-    System.out.println("查询到："+readJobDaoImpl.selectall());
+    System.out.println("查询到：" + readJobDaoImpl.selectall());
     result = readJobDaoImpl.selectall();
     return result;
+  }
+
+  @Override
+  public HdUserinfo getone(String id) throws Exception {
+    HdUserinfo result = new HdUserinfo();
+    result = readJobDaoImpl.getone(id);
+    return result;
+
   }
 
   @Override
@@ -32,6 +39,12 @@ public class ReadJobServiceImpl implements IReadJobService {
   @Override
   public int save(HdUserinfo user) throws Exception {
     int result = readJobDaoImpl.save(user);
+    return result;
+  }
+
+  @Override
+  public int update(HdUserinfo user) throws Exception {
+    int result = readJobDaoImpl.update(user);
     return result;
   }
 

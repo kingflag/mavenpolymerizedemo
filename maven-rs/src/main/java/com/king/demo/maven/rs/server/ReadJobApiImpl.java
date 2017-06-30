@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import com.hd123.rumba.commons.lang.Assert;
 import com.king.demo.maven.APIdomain.APIHdUserinfo;
 import com.king.demo.maven.controller.APIIReadJobController;
+import com.king.demo.maven.rs.server.converter.HdUserinfoConverter;
 import com.king.demo.maven.rs.server.converter.RSHdUserinfo;
 import com.king.demo.maven.rs.service.IReadJobApi;
 
@@ -44,19 +45,30 @@ public class ReadJobApiImpl implements IReadJobApi {
       return readJobController.selectall();
     }
   }
-  
 
   @Override
-  public Map<String, Object> findall() throws Exception{   
+  public Map<String, Object> findall() throws Exception {
     Map<String, Object> resultMap = new HashMap<String, Object>();
-    try {  
+    try {
       resultMap.put("restlt", readJobController.selectall());
       return resultMap;
-    } catch (Exception e) {  
-        e.printStackTrace();  
-        return null;
+    } catch (Exception e) {
+      e.printStackTrace();
+      return null;
     }
-}  
+  }
+
+  @Override
+  public Map<String, Object> getone(String id) throws Exception {
+    Map<String, Object> resultMap = new HashMap<String, Object>();
+    try {
+      resultMap.put("restlt", readJobController.getone(id));
+      return resultMap;
+    } catch (Exception e) {
+      e.printStackTrace();
+      return null;
+    }
+  }
 
   @Override
   public int delete(String id) throws Exception {
@@ -67,10 +79,19 @@ public class ReadJobApiImpl implements IReadJobApi {
 
   @Override
   public int save(RSHdUserinfo user) throws Exception {
-    
+
     Assert.assertAttributeNotNull(user, "user");
     System.out.println(user.toString());
-    return 0;
+    int result = readJobController.save(HdUserinfoConverter.getInstance().convert(user));
+    return result;
+  }
+
+  @Override
+  public int update(RSHdUserinfo user) throws Exception {
+    Assert.assertAttributeNotNull(user, "user");
+    System.out.println(user.toString());
+    int result = readJobController.update(HdUserinfoConverter.getInstance().convert(user));
+    return result;
   }
 
 }

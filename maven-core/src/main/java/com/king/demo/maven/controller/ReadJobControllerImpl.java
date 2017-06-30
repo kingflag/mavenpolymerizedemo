@@ -33,11 +33,21 @@ public class ReadJobControllerImpl implements APIIReadJobController {
   }
 
   @Override
+  public APIHdUserinfo getone(String id) throws Exception {
+    HdUserinfo result = readJobServiceImpl.getone(id);
+    APIHdUserinfo results = new APIHdUserinfo();
+    results.setId(result.getId());
+    results.setUser(result.getUser());
+    results.setSurplus(result.getSurplus());
+    results.setCreatetime(result.getCreatetime());
+    return results;
+  }
+
+  @Override
   public int delete(String id) throws Exception {
     int result = readJobServiceImpl.delete(id);
     return result;
   }
-
 
   @Override
   public int save(APIHdUserinfo user) throws Exception {
@@ -47,6 +57,17 @@ public class ReadJobControllerImpl implements APIIReadJobController {
     newuser.setSurplus(user.getSurplus());
     newuser.setCreatetime(user.getCreatetime());
     int result = readJobServiceImpl.save(newuser);
+    return result;
+  }
+
+  @Override
+  public int update(APIHdUserinfo user) throws Exception {
+    HdUserinfo newuser = new HdUserinfo();
+    newuser.setId(user.getId());
+    newuser.setUser(user.getUser());
+    newuser.setSurplus(user.getSurplus());
+    newuser.setCreatetime(user.getCreatetime());
+    int result = readJobServiceImpl.update(newuser);
     return result;
   }
 
