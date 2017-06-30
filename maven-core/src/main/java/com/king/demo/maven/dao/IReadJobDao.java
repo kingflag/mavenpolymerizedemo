@@ -9,4 +9,5 @@ public interface IReadJobDao {
   
   public int delete(String id) throws Exception;
 
+  public int save(HdUserinfo user) throws Exception;
 }

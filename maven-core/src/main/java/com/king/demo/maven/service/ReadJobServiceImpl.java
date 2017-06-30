@@ -29,4 +29,10 @@ public class ReadJobServiceImpl implements IReadJobService {
     return result;
   }
 
+  @Override
+  public int save(HdUserinfo user) throws Exception {
+    int result = readJobDaoImpl.save(user);
+    return result;
+  }
+
 }

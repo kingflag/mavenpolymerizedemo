@@ -41,4 +41,19 @@ public class ReadJobDaoImpl implements IReadJobDao {
     int result = jdbcTemplate.update(sql);
     return result;
   }
+
+  @Override
+  public int save(HdUserinfo user) throws Exception {
+    String sql = "insert into user(username,password,email)values(?,?,?)";  
+    Object args[] = {user.getId(),user.getUser(),user.getSurplus(),user.getCreatetime()};  
+    int result = jdbcTemplate.update(sql, args);
+    if (result>0) {
+        System.out.println("插入成功");
+    } else {
+        System.out.println("插入失败");
+    }
+    return result;
+  }
+  
+  
 }

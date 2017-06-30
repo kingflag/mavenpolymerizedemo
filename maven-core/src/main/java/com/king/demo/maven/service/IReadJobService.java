@@ -9,5 +9,7 @@ public interface IReadJobService {
   public List<HdUserinfo> selectall() throws Exception;
   
   public int delete(String id) throws Exception;
+  
+  public int save(HdUserinfo user) throws Exception;
 
 }

@@ -38,4 +38,16 @@ public class ReadJobControllerImpl implements APIIReadJobController {
     return result;
   }
 
+
+  @Override
+  public int save(APIHdUserinfo user) throws Exception {
+    HdUserinfo newuser = new HdUserinfo();
+    newuser.setId(user.getId());
+    newuser.setUser(user.getUser());
+    newuser.setSurplus(user.getSurplus());
+    newuser.setCreatetime(user.getCreatetime());
+    int result = readJobServiceImpl.save(newuser);
+    return result;
+  }
+
 }

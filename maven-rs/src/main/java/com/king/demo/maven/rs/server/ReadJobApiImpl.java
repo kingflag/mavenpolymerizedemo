@@ -4,26 +4,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
-
-
-
-
-
-
-
-
-
-
-
+import com.hd123.rumba.commons.lang.Assert;
 import com.king.demo.maven.APIdomain.APIHdUserinfo;
 import com.king.demo.maven.controller.APIIReadJobController;
+import com.king.demo.maven.rs.server.converter.RSHdUserinfo;
 import com.king.demo.maven.rs.service.IReadJobApi;
 
 public class ReadJobApiImpl implements IReadJobApi {
@@ -79,8 +66,10 @@ public class ReadJobApiImpl implements IReadJobApi {
   }
 
   @Override
-  public int save(APIHdUserinfo user) throws Exception {
-    // TODO Auto-generated method stub
+  public int save(RSHdUserinfo user) throws Exception {
+    
+    Assert.assertAttributeNotNull(user, "user");
+    System.out.println(user.toString());
     return 0;
   }
 
