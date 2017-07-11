@@ -48,4 +48,38 @@ public class ReadJobServiceImpl implements IReadJobService {
     return result;
   }
 
+  @Override
+  public List<HdUserinfo> hbselectall() throws Exception {
+    List<HdUserinfo> result = new ArrayList<HdUserinfo>();
+    System.out.println("hibernate查询到：" + readJobDaoImpl.hbselectall());
+    result = readJobDaoImpl.hbselectall();
+    return result;
+  }
+
+  @Override
+  public HdUserinfo hbgetone(String id) throws Exception {
+    HdUserinfo result = new HdUserinfo();
+    result = readJobDaoImpl.hbgetone(id);
+    return result;
+
+  }
+
+  @Override
+  public int hbdelete(String id) throws Exception {
+    int result = readJobDaoImpl.hbdelete(id);
+    return result;
+  }
+
+  @Override
+  public int hbsave(HdUserinfo user) throws Exception {
+    int result = readJobDaoImpl.hbsave(user);
+    return result;
+  }
+
+  @Override
+  public int hbupdate(HdUserinfo user) throws Exception {
+    int result = readJobDaoImpl.hbupdate(user);
+    return result;
+  }
+
 }

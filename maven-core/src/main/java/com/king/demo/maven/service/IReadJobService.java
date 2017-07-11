@@ -15,4 +15,16 @@ public interface IReadJobService {
   public int save(HdUserinfo user) throws Exception;
 
   public int update(HdUserinfo user)throws Exception;
+  
+  
+  
+  public List<HdUserinfo> hbselectall() throws Exception;
+  
+  public HdUserinfo hbgetone(String id) throws Exception;
+  
+  public int hbdelete(String id) throws Exception;
+  
+  public int hbsave(HdUserinfo user) throws Exception;
+
+  public int hbupdate(HdUserinfo user)throws Exception;
 }

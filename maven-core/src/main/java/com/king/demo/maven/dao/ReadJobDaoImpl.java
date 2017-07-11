@@ -1,12 +1,10 @@
 package com.king.demo.maven.dao;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
 import javax.sql.DataSource;
 
-import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
@@ -101,6 +99,36 @@ public class ReadJobDaoImpl implements IReadJobDao {
       System.out.println("修改失败");
     }
     return result;
+  }
+
+  @Override
+  public List<HdUserinfo> hbselectall() throws Exception {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public HdUserinfo hbgetone(String id) throws Exception {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public int hbdelete(String id) throws Exception {
+    // TODO Auto-generated method stub
+    return 0;
+  }
+
+  @Override
+  public int hbsave(HdUserinfo user) throws Exception {
+    // TODO Auto-generated method stub
+    return 0;
+  }
+
+  @Override
+  public int hbupdate(HdUserinfo userinfo) throws Exception {
+    // TODO Auto-generated method stub
+    return 0;
   }
 
 }

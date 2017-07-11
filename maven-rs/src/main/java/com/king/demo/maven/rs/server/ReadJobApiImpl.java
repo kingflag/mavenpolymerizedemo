@@ -99,4 +99,54 @@ public class ReadJobApiImpl implements IReadJobApi {
     return result;
   }
 
+  @Override
+  public Map<String, Object> hbfindall() throws Exception {
+    Map<String, Object> resultMap = new HashMap<String, Object>();
+    try {
+      resultMap.put("restlt", readJobController.hbselectall());
+      return resultMap;
+    } catch (Exception e) {
+      e.printStackTrace();
+      return null;
+    }
+  }
+
+  @Override
+  public Map<String, Object> hbgetone(String id) throws Exception {
+    Map<String, Object> resultMap = new HashMap<String, Object>();
+    try {
+      resultMap.put("restlt", readJobController.hbgetone(id));
+      return resultMap;
+    } catch (Exception e) {
+      e.printStackTrace();
+      return null;
+    }
+  }
+
+  @Override
+  public int hbdelete(String id) throws Exception {
+    System.out.println("hibernate接收的id:" + id);
+    Assert.assertArgumentNotNull(id, "id");
+    int result = readJobController.hbdelete(id);
+    System.out.println(result);
+    return result;
+  }
+
+  @Override
+  public int hbsave(RSHdUserinfo user) throws Exception {
+
+    Assert.assertAttributeNotNull(user, "user");
+    System.out.println("hibernate接收到的user:" + user.toString());
+    int result = readJobController.hbsave(HdUserinfoConverter.getInstance().convert(user));
+    return result;
+  }
+
+  @Override
+  public int hbupdate(RSHdUserinfo user) throws Exception {
+    Assert.assertAttributeNotNull(user, "user");
+    System.out.println("hibernate接收到的user:" + user.toString());
+    int result = readJobController.hbupdate(HdUserinfoConverter.getInstance().convert(user));
+    return result;
+  }
+
 }

@@ -5,6 +5,9 @@ import java.util.List;
 import com.king.demo.maven.domain.HdUserinfo;
 
 public interface IReadJobDao {
+  /*
+   * 以下是jdbctemplate的方法
+   */
   public List<HdUserinfo> selectall() throws Exception;
   
   public HdUserinfo getone(String id) throws Exception;
@@ -14,4 +17,19 @@ public interface IReadJobDao {
   public int save(HdUserinfo user) throws Exception;
   
   public int update(HdUserinfo userinfo) throws Exception;
+  
+  /**
+   * 以下是hibernate的方法
+   * @return
+   * @throws Exception
+   */
+  public List<HdUserinfo> hbselectall() throws Exception;
+  
+  public HdUserinfo hbgetone(String id) throws Exception;
+  
+  public int hbdelete(String id) throws Exception;
+
+  public int hbsave(HdUserinfo user) throws Exception;
+  
+  public int hbupdate(HdUserinfo userinfo) throws Exception;
 }
