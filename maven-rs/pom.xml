@@ -10,50 +10,12 @@
 
 
   <dependencies>
-
-<!-- 依赖core -->
-    <!--     
-    <dependency>
-      <groupId>com.king.demo</groupId>
-      <artifactId>maven-core</artifactId>
-      <version>${project.version}</version>
-    </dependency>
-     -->
-
-    <dependency>
-      <groupId>javax.ws.rs</groupId>
-      <artifactId>javax.ws.rs-api</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.hd123.rumba.commons</groupId>
-      <artifactId>rumba-commons-rpc</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.codehaus.jackson</groupId>
-      <artifactId>jackson-jaxrs</artifactId>
-      <scope>runtime</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.hd123.rumba.commons</groupId>
-      <artifactId>rumba-commons-rs</artifactId>
-    </dependency>
-
+  
 <!-- 此依赖是为了能够分层调用，实现restful时不直接调用（core）层数据 -->
     <dependency>
       <groupId>com.king.demo</groupId>
       <artifactId>maven-api</artifactId>
       <version>${project.version}</version>
-    </dependency>
-
-
-
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.security</groupId>
-      <artifactId>spring-security-core</artifactId>
     </dependency>
 
   </dependencies>

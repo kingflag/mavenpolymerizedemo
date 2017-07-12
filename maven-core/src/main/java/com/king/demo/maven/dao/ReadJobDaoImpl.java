@@ -18,6 +18,7 @@ public class ReadJobDaoImpl implements IReadJobDao {
   public void setDataSource(DataSource dataSource) {
     this.jdbcTemplate = new JdbcTemplate(dataSource);
   }
+  
 
   @Override
   public List<HdUserinfo> selectall() throws Exception {

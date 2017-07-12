@@ -24,18 +24,16 @@
     <commons-lang3.version>3.1</commons-lang3.version>
     <druid.version>1.0.13</druid.version>
 
-    <rumba-commons-biz.version>1.7</rumba-commons-biz.version>
-    <rumba-commons-mini.version>1.9</rumba-commons-mini.version>
-    <rumba-commons-rpc.version>1.3</rumba-commons-rpc.version>
-    <rumba-commons-rs.version>1.8</rumba-commons-rs.version>
-    <rumba-enc.version>1.0.1</rumba-enc.version>
 
-    <slf4j.version>1.6.4</slf4j.version>
-    <log4j.version>1.2.16</log4j.version>
+    <rumba-commons-rs.version>1.8</rumba-commons-rs.version>
+
+    <slf4j.version>1.7.5</slf4j.version>
+    <log4j.version>1.2.17</log4j.version>
 
     <junit.version>4.10</junit.version>
 
     <hibernate.version>3.6.8.Final</hibernate.version>
+    <!-- <hibernate.version>4.3.5.Final</hibernate.version> -->
     <hibernate-annotations.version>3.2.1.ga</hibernate-annotations.version>
     <hibernate-entitymanager.version>3.2.1.ga</hibernate-entitymanager.version>
     <hibernate-jpa-2.0-api.version>1.0.1.Final</hibernate-jpa-2.0-api.version>
@@ -94,52 +92,11 @@
     <dependencies>
       
       <!-- Basic Tool -->
-      <dependency>
-        <groupId>com.hd123.rumba.commons</groupId>
-        <artifactId>rumba-commons-biz</artifactId>
-        <version>${rumba-commons-biz.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.hd123.cloud.pay.external</groupId>
-        <artifactId>alipay-sdk-java</artifactId>
-        <version>${alipay-sdk-java.version}</version>
-      </dependency>
-<!-- 	  <dependency>
-        <groupId>com.hd123.rumba.enc</groupId>
-        <artifactId>rumba-enc-spring</artifactId>
-        <version>${rumba-enc.version}</version>
-      </dependency> -->
-      <dependency>
-        <groupId>com.hd123.jpos.external</groupId>
-        <artifactId>tapestry-json</artifactId>
-        <version>${tapestry-json.version}</version>
-        <classifier>json</classifier>
-      </dependency>
-      <dependency>
-        <groupId>com.hd123.rumba.commons</groupId>
-        <artifactId>rumba-commons-mini</artifactId>
-        <version>${rumba-commons-mini.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.hd123.rumba.commons</groupId>
-        <artifactId>rumba-commons-rpc</artifactId>
-        <version>${rumba-commons-rpc.version}</version>
-      </dependency>
+
       <dependency>
         <groupId>com.hd123.rumba.commons</groupId>
         <artifactId>rumba-commons-rs</artifactId>
         <version>${rumba-commons-rs.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.hd123.rumba.enc</groupId>
-        <artifactId>rumba-enc-spring</artifactId>
-        <version>${rumba-enc.version}</version>
-      </dependency>
-
-      <dependency>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-resources-plugin</artifactId>
-        <version>${maven-resources-plugin.version}</version>
       </dependency>
 
       <dependency>
@@ -196,30 +153,11 @@
       </dependency>
       
       <!-- DataBase Connecter -->
-      <dependency>
-        <groupId>org.apache.derby</groupId>
-        <artifactId>derby</artifactId>
-        <version>${derby.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.microsoft.sqljdbc</groupId>
-        <artifactId>sqljdbc</artifactId>
-        <version>${sqljdbc.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.oracle</groupId>
-        <artifactId>ojdbc14</artifactId>
-        <version>${ojdbc.version}</version>
-      </dependency>
+
       <dependency>
         <groupId>mysql</groupId>
         <artifactId>mysql-connector-java</artifactId>
         <version>${mysql.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.hsqldb</groupId>
-        <artifactId>hsqldb</artifactId>
-        <version>${hsqldb.version}</version>
       </dependency>
       
       
@@ -256,11 +194,13 @@
       </dependency>
 
       <!-- Logger -->
+
       <dependency>
         <groupId>log4j</groupId>
         <artifactId>log4j</artifactId>
         <version>${log4j.version}</version>
       </dependency>
+
       <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-api</artifactId>
@@ -411,28 +351,6 @@
         <version>${flexjson.version}</version>
       </dependency>
 
-      <!-- Http -->
-      <dependency>
-        <groupId>org.apache.httpcomponents</groupId>
-        <artifactId>httpcore</artifactId>
-        <version>${httpcore.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.httpcomponents</groupId>
-        <artifactId>httpclient</artifactId>
-        <version>${httpclient.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>commons-httpclient</groupId>
-        <artifactId>commons-httpclient</artifactId>
-        <version>${commons-httpclient.version}</version>
-      </dependency>
-
-      <dependency>
-        <groupId>org.apache.httpcomponents</groupId>
-        <artifactId>httpmime</artifactId>
-        <version>${httpmime.version}</version>
-      </dependency>
 
     </dependencies>
   </dependencyManagement>
