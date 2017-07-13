@@ -36,12 +36,10 @@ public class ReadJobControllerImpl implements APIIReadJobController {
   public APIHdUserinfo getone(String id) throws Exception {
     HdUserinfo result = readJobServiceImpl.getone(id);
     APIHdUserinfo results = new APIHdUserinfo();
-    if (null != result) {
-      results.setId(result.getId());
-      results.setUser(result.getUser());
-      results.setSurplus(result.getSurplus());
-      results.setCreatetime(result.getCreatetime());
-    }
+    results.setId(result.getId());
+    results.setUser(result.getUser());
+    results.setSurplus(result.getSurplus());
+    results.setCreatetime(result.getCreatetime());
     return results;
   }
 
@@ -93,13 +91,10 @@ public class ReadJobControllerImpl implements APIIReadJobController {
   public APIHdUserinfo hbgetone(String id) throws Exception {
     HdUserinfo result = readJobServiceImpl.hbgetone(id);
     APIHdUserinfo results = new APIHdUserinfo();
-    if (null != result) {
-      results.setId(result.getId());
-      results.setUser(result.getUser());
-      results.setSurplus(result.getSurplus());
-      results.setCreatetime(result.getCreatetime());
-    }
-
+    results.setId(result.getId());
+    results.setUser(result.getUser());
+    results.setSurplus(result.getSurplus());
+    results.setCreatetime(result.getCreatetime());
     return results;
   }
 

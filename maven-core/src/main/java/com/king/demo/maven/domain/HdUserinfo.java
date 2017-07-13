@@ -1,36 +1,14 @@
 package com.king.demo.maven.domain;
 
-import java.io.Serializable;
 import java.util.Date;
 
-//import javax.persistence.Column;
-//import javax.persistence.Entity;
-//import javax.persistence.GeneratedValue;
-//import javax.persistence.GenerationType;
-//import javax.persistence.Id;
-//import javax.persistence.Table;
-
-
-//@Entity
-//@Table(name = HdUserinfo.TABLE_NAME)
-public class HdUserinfo implements Serializable  {
-
-  /**
-   * 
-   */
-  private static final long serialVersionUID = 1L;
-
-  /** 数据库表名称。 */
-  public static final String TABLE_NAME = "hdUserinfo";
+public class HdUserinfo {
 
   private int id;
   private String user;
   private String surplus;
   private Date createtime;
 
-//  @Id
-//  @Column(name = "id")
-//  @GeneratedValue(strategy=GenerationType.AUTO)
   public int getId() {
     return id;
   }
@@ -39,7 +17,6 @@ public class HdUserinfo implements Serializable  {
     this.id = id;
   }
 
-  //@Column(name = "user")
   public String getUser() {
     return user;
   }
@@ -48,7 +25,6 @@ public class HdUserinfo implements Serializable  {
     this.user = user;
   }
 
-  //@Column(name = "surplus")
   public String getSurplus() {
     return surplus;
   }
@@ -57,7 +33,6 @@ public class HdUserinfo implements Serializable  {
     this.surplus = surplus;
   }
 
-  //@Column(name = "surplus")
   public Date getCreatetime() {
     return createtime;
   }

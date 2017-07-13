@@ -46,7 +46,7 @@
     <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
   </bean>
 
-
+  
   <bean id="maven-core.transactionManager"
     class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
     <property name="dataSource" ref="mytest.dataSource" />
@@ -59,7 +59,8 @@
   <bean id="maven-core.writeJob" class="com.king.demo.maven.corejob.WriteJob"></bean>
 
 <!-- 写入数据控制器 -->
-  <bean id="writeJobcontroller" class="com.king.demo.maven.controller.WriteJobControllerImpl"></bean>
+  <bean id="writeJobcontroller"
+    class="com.king.demo.maven.controller.WriteJobControllerImpl"></bean>
 
 <!-- 写入数据service -->
   <bean id="writeJobservice" class="com.king.demo.maven.service.WriteJobServiceImpl"></bean>
@@ -70,46 +71,15 @@
 
 
 <!-- 读取数据控制器 -->
-  <bean id="readJobcontroller" class="com.king.demo.maven.controller.ReadJobControllerImpl"></bean>
-<!-- 读取数据service -->
-  <bean id="readJobservice" class="com.king.demo.maven.service.ReadJobServiceImpl"></bean>
+  <bean id="readJobcontroller"
+    class="com.king.demo.maven.controller.ReadJobControllerImpl"></bean>
+<!-- 读取数据service -->    
+   <bean id="readJobservice" class="com.king.demo.maven.service.ReadJobServiceImpl"></bean>
 <!-- 读取数据dao -->
   <bean id="readJobdao" class="com.king.demo.maven.dao.ReadJobDaoImpl">
     <property name="dataSource" ref="mytest.dataSource" />
   </bean>
-  
-  
-<!-- hibernate配置数据 -->
-<!--  
-  <bean id="sessionFactory"
-    class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-    <property name="dataSource" ref="mytest.dataSource" />
-    <property name="packagesToScan">
-      <list>
-        <value>com.king.demo.maven.domain</value>
-      </list>
-    </property>
-    <property name="hibernateProperties">
-      <props>
-        <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
-        <prop key="hibernate.show_sql">true</prop>
-        <prop key="hibernate.format_sql">true</prop>
-        <prop key="hibernate.use_sql_commants">true</prop>
-        <prop key="hibernate.hbm2ddl.auto">validate</prop>
-      </props>
-    </property>
-  </bean>
 
-  <bean id="txManager"
-    class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-    <property name="sessionFactory" ref="sessionFactory" />
-  </bean>
-  <tx:advice id="txAdvice" transaction-manager="txManager">
-    <tx:attributes>
-      <tx:method name="get*" read-only="true" />
-      <tx:method name="*" />
-    </tx:attributes>
-  </tx:advice>
- -->
+
 
 </beans>
